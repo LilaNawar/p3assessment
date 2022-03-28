@@ -25,4 +25,5 @@ def about(request):
 
 def cats_index(request):
     cats = Cat.objects.all()
+    # SELECT * from Cat
     return render(request, 'cats/index.html', { 'cats': cats})
