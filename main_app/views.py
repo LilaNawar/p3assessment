@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Cat
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import FeedingForm
 # Create your views here.
 
 # class Cat:
@@ -39,7 +40,8 @@ def cats_index(request):
 
 def cats_details(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
-    return render(request, 'cats/detail.html', {'cat': cat})
+    feeding_form = FeedingForm()
+    return render(request, 'cats/detail.html', {'cat': cat, 'feeding_form': feeding_form})
 
 class CatUpdate(UpdateView):
     model = Cat
