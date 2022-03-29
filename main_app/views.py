@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Cat
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 # class Cat:
@@ -16,6 +17,13 @@ from .models import Cat
 #   Cat('Sachi', 'tortoise shell', 'diluted tortoise shell', 0),
 #   Cat('Raven', 'black tripod', '3 legged cat', 4)
 # ]
+
+# /templates/main_app/cat_form.html
+
+class CatCreate(CreateView):
+    model = Cat
+    fields = '__all__'
+    success_url = '/cats/'
 
 def home(request):
     return render(request, 'home.html')
