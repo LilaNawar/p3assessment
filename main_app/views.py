@@ -23,7 +23,7 @@ from django.views.generic.edit import CreateView
 class CatCreate(CreateView):
     model = Cat
     fields = '__all__'
-    success_url = '/cats/'
+    # success_url = '/cats/'
 
 def home(request):
     return render(request, 'home.html')
