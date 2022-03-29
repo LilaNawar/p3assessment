@@ -22,9 +22,12 @@ class Cat(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs = {'cat_id': self.id})
 
+    def __str__(self):
+        return self.name
+
 
 class Feeding(models.Model):
-    date = models.DateField()
+    date = models.DateField('Feeding Date')
     meal = models.CharField(max_length=1, choices=MEALS, default=MEALS[0][0])
     cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
 
