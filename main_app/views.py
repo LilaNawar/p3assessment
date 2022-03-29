@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Cat
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 # class Cat:
@@ -40,3 +40,11 @@ def cats_index(request):
 def cats_details(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
     return render(request, 'cats/detail.html', {'cat': cat})
+
+class CatUpdate(UpdateView):
+    model = Cat
+    fields = ['breed', 'description', 'age']
+
+class CatDelete(DeleteView):
+    model = Cat
+    success_url = '/cats/'
