@@ -35,4 +35,4 @@ class Feeding(models.Model):
         return f"{self.get_meal_display()} on {self.date}"
 
     class Meta:
-        ordering = ['meal']
+        ordering = ['-date']
