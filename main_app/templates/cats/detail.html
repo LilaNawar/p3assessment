@@ -36,7 +36,7 @@
 
 <div>
 
-  <form method="post" action="">
+  <form method="post" action="{% url 'add_feeding' cat.id %}">
 
     {% csrf_token %}
     {{ feeding_form.as_p }}
@@ -63,4 +63,22 @@
   </table>
 </div>
 
+
+<script>
+var dateEl = document.getElementById('id_date');
+M.Datepicker.init(dateEl, {
+  format: 'yyyy-mm-dd',
+  defaultDate: new Date(),
+  setDefaultDate: true,
+  autoClose: true
+});
+
+var selectEl = document.getElementById('id_meal');
+M.FormSelect.init(selectEl);
+
+</script>
+
 {% endblock %}
+
+
+
