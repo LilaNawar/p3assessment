@@ -30,6 +30,7 @@ class Cat(models.Model):
     description = models.TextField(max_length=250)
     age = models.IntegerField()
     image = models.CharField(default=None, blank=True, null=True, max_length=2000)
+    toys = models.ManyToManyField(Toy)
 
     def get_absolute_url(self):
         return reverse('detail', kwargs = {'cat_id': self.id})
