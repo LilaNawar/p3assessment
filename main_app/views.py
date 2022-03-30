@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from .models import Cat
+from .models import Cat, Toy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import FeedingForm
+from django.views.generic import ListView, DetailView
 # Create your views here.
 
 # class Cat:
@@ -58,3 +59,22 @@ class CatUpdate(UpdateView):
 class CatDelete(DeleteView):
     model = Cat
     success_url = '/cats/'
+
+
+class ToyList(ListView):
+    model = Toy
+
+class ToyDetail(DetailView):
+    model = Toy
+
+class ToyCreate(CreateView):
+    model = Toy 
+    fields = '__all__'
+
+class ToyUpdate(UpdateView):
+    model = Toy 
+    fields = ['name', 'color']
+
+class ToyDelete(DeleteView):
+    model = Toy
+    success_url = '/toys/'

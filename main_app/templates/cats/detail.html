@@ -36,6 +36,12 @@
 
 <div>
 
+    {% if cat.fed_for_today %}
+      <div class="card-panel teal-text center-align">{{cat.name}} has been fed all meals for today</div>
+    {% else %}
+      <div class="card-panel red-text center-align">{{cat.name}} might be hungry</div>
+    {% endif %}
+
   <form method="post" action="{% url 'add_feeding' cat.id %}">
 
     {% csrf_token %}
