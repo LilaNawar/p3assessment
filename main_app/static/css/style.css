@@ -18,3 +18,11 @@ footer.page-footer {
     display: flex;
     justify-content: space-between;
   }
+
+  .nav-wrapper{
+    background-color:rgb(151, 158, 158) !important;;
+   }
+
+   .page-footer{
+    background-color:rgb(151, 158, 158) !important;;
+   }
