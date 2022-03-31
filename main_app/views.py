@@ -27,6 +27,14 @@ class CatCreate(CreateView):
     fields = ['name', 'breed', 'description', 'age', 'image']
     # success_url = '/cats/'
 
+    # Overriding in child class
+    def form_valid(self, form):
+        # After Submitting the form, and before committing to the database
+        # Add current user id
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
 def home(request):
     return render(request, 'home.html')
 

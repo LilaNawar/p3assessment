@@ -27,6 +27,8 @@
             <li>
               <a href="{% url 'about' %}">About</a>
             </li>
+
+            {% if user.is_authenticated %}
             <li>
               <a href="{% url 'cats_create' %}">Add a Cat</a>
             </li>
@@ -36,6 +38,21 @@
 
             <li><a href="{% url 'toys_create' %}">Add Toy</a></li>
             <li><a href="{% url 'toys_index' %}">View all Toys</a></li>
+
+            <li>
+              <a href="{% url 'logout' %}">Log out</a>
+            </li>
+
+            {% else %}
+
+          
+            
+
+            <li>
+              <a href="{% url 'login' %}">Login</a>
+            </li>
+
+            {% endif %}
 
           </ul>
         </div>
