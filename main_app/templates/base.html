@@ -43,10 +43,13 @@
               <a href="{% url 'logout' %}">Log out</a>
             </li>
 
+            Hi {{user.username}}
+
             {% else %}
 
-          
-            
+            <li>
+              <a href="{% url 'signup' %}">Signup</a>
+            </li>
 
             <li>
               <a href="{% url 'login' %}">Login</a>
