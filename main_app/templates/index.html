@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/styles.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
+      integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+      crossorigin="anonymous"
+    />
+    <title>Wacky Widgets</title>
+  </head>
+  <body>
+    <h1>Wacky Widgets</h1>
+    {% if widget_list %}
+    <table>
+      <tr style="margin-left: auto; margin-right: auto">
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Delete?</th>
+      </tr>
+      {% for widget in widget_list %}
+      <tr>
+        <td>{{widget.description}}</td>
+        <td>{{widget.quantity}}</td>
+        <td>
+          <a href="{% url 'delete' widget.id %}" style="color: red">X</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <h3>No Widgets Exist</h3>
+    <hr />
+    {% endif %}
+    <div class="center">
+      <div style="margin-left: auto; margin-right: auto">
+        <form action="{% url 'create' %}" method="post">
+          {% csrf_token %}
+          <label
+            for="description"
+            style="display: inline-block; width: 100px; text-align: right"
+            >Description:
+          </label>
+          <input
+            type="text"
+            name="description"
+            id=""
+            placeholder="Enter Description"
+          /><br />
+          <label for="quantity">Quantity: </label>
+          <input
+            type="number"
+            name="quantity"
+            id=""
+            placeholder="Quantity"
+          /><br />
+          <input type="submit" value="Add" class="btn pure-button" /><br />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
